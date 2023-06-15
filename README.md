@@ -1,24 +1,51 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Contents:**
+- [Tasks](#task)
+- [Brief](#brief)
+- [Tech Stack](#tech-stack)
+- [Setup to run locally](#setup-to-run-locally)
+- [Design](#design)
+- [Notes](#notes)
 
-Things you may want to cover:
+## Task
 
-* Ruby version
+Use Ruby on Rails to build a project conversation history. A user should be able to:
 
-* System dependencies
+- leave a comment
+- change the status of the project
 
-* Configuration
+The project conversation history should list comments and changes in status. 
 
-* Database creation
+Please don’t spend any more than 3 hours on this task.
 
-* Database initialization
+## Brief
 
-* How to run the test suite
+Treat this as if this was the only information given to you by a team member, and take the approach you would normally take in order to build the right product for the company.
 
-* Services (job queues, cache servers, search engines, etc.)
+To this extent:
 
-* Deployment instructions
+- Please write down the questions you would have asked your colleagues
+- Include answers that you might expect from them
+- Then build a project conversation based on the answers to the questions you raised.
 
-* ...
+## Tech Stack
+- Ruby 3.2.2
+- Rails 7.0.5
+- Postgresql 15
+- Docker + Docker Compose
+- Shell scripts
+
+## Setup to run locally
+
+Detailed information on how to setup locally with Docker and Docker compose are contained in the document [Docker Development + Local Setup](docs/docker-local-setup.md)
+
+The only prerequisites for running/developing locally are install the approriate version of Docker + Docker Compose. Instructions for this are linked in the document referenced above.
+
+## Design
+
+The design decisions taken related to the brief are contained in the `docs` folder in the project. Links to these are provided here so as to keep the main README concise.
+
+[Questions, Answers and Assumptions](docs/questions-answers-and-assumptions.md)
+
+## Notes
