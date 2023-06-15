@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  web:
+    build: .
+    ports:
+      - 3000:3000
+      - 4000:4000
+    volumes:
+      - .:/usr/src/app
+      - gem_cache_homey_project_tracker:/gems
+    env_file:
+      - .env/development/database
+      - .env/development/web
+
+  # redis:
+  #   image: redis:7.0.11-alpine3.18
+
+  database:
+    image: postgres:15.3-alpine3.18
+    env_file:
+      - .env/development/database
+    volumes:
+      - pg_data_homey_project_tracker:/var/lib/postgresql/data
+
+volumes:
+  pg_data_homey_project_tracker:
+  gem_cache_homey_project_tracker:
