@@ -20,4 +20,15 @@ RSpec.feature "Users can create new projects" do
     title = "Homey - Projects - Rogers @ 100 Lochabar Road, London, SW3 1QQ"
     expect(page).to have_title title
   end
+
+  scenario "with invalid attributes" do
+    visit projects_path
+
+    click_link "New Project"
+    click_button "Create Project"
+
+    expect(page).to have_content "Project has not been created."
+    expect(page).to_not have_content "Venuthasham - Ground Floor Flat, 200A Wilmslow Road, Manchester, M14 0AR"
+    expect(page).to have_content "Title can't be blank"
+  end
 end
