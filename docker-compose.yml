@@ -12,6 +12,7 @@ services:
     env_file:
       - .env/development/database
       - .env/development/web
+    tty: true
 
   # redis:
   #   image: redis:7.0.11-alpine3.18
