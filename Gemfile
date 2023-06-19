@@ -71,3 +71,5 @@ end
 group :test do
   gem "capybara"
 end
+
+gem "simple_form"

@@ -1,16 +1,10 @@
 <h1>New Project</h1>
 
-<%= form_for(@project) do |f| %>
+<%= simple_form_for(@project) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </p>
-
-  <%= f.submit %>
+  <%= f.input :title, autocomplete: "title", placeholder: "100 Lochabar Road, London, SE12 0JB" %>
+  <%= f.input :description, autocomplete: "description", placeholder: "Enter a brief project description" %>
+  <div>
+    <%= f.button :submit, class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+  </div>
 <% end %>
