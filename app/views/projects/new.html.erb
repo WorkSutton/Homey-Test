@@ -1,16 +1,10 @@
 <h1 class="mb-4 text-3xl font-bold">New Project</h1>
+<div>
   <%= simple_form_for(@project, builder: SimpleForm::Tailwind::FormBuilder, local: true) do |f| %>
-    <%= f.error_notification %>
-    <%#= f.error_notification icon: "x-circle" %>
-    <%#= f.error_notification icon: "information-circle", icon_classes: "h-5 w-5 text-blue-400", message_classes: "text-sm text-blue-700", border_classes: "bg-blue-50 border-l-4 border-blue-400 p-4" %>
-    <%#= f.error_notification icon: "information-circle", icon_classes: "h-5 w-5 text-red-400", message_classes: "text-sm text-red-700", border_classes: "bg-red-50 border-l-8 border-red-600 p-4" %>
-
+    <%= f.error_notification icon: "bell-alert", icon_classes: "mr-2 h-5 w-5 text-red-600", border_classes: "bg-red-50 border-l-8 border-red-600 p-4 border-b-slate-400 border-b", message_classes: "text-sm text-red-700" %>
+    <hr class="text-slate-400 w-full flex">
     <%= f.input :title, autocomplete: "title", placeholder: "11a, Lochaber Road, London, SE13 5QU" %>
-    <%#= f.input :title, autocomplete: "title", placeholder: "100 Lochabar Road, London, SE12 0JB", error_class: "h-8 w-8 bg-teal-400 text-orange-400" %>
-    <%#= f.input :title, autocomplete: "title", placeholder: "11a, Lochaber Road, London, SE13 5QU", required: true, class: "border-yellow-200 focus:border-yellow-900 border-xl-4" , error_class: "bg-red-100 border-l-8 border-red-700 p-6 text-red-700" %>
-    <%#= f.input :title, as: "prepend_string", prepend: "twitter.com/", placeholder: "jack" %>
-    <%= f.input :description, autocomplete: "description", placeholder: "Enter a brief project description", class: "border-red-700" %>
-    <div>
-    <%= f.button :submit, class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-    </div>
+    <%= f.input :description, autocomplete: "description", placeholder: "Enter a brief project description", class: "border-red-700 mt-4" %>
+    <%= f.button :submit, class: "w-full flex justify-center mt-4 py-2 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
   <% end %>
+</div>

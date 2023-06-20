@@ -15,57 +15,57 @@ SimpleForm.setup do |config|
   # whole input.
 
 
-  # ---------------  Original SF default configuration  ----------------------
-  config.wrappers :default, class: :input,
-    hint_class: :field_with_hint, error_class: :field_with_errors, valid_class: :field_without_errors do |b|
-    ## Extensions enabled by default
-    # Any of these extensions can be disabled for a
-    # given input by passing: `f.input EXTENSION_NAME => false`.
-    # You can make any of these extensions optional by
-    # renaming `b.use` to `b.optional`.
+#   # ---------------  Original SF default configuration  ----------------------
+#   config.wrappers :default, class: :input,
+#     hint_class: :field_with_hint, error_class: :field_with_errors, valid_class: :field_without_errors do |b|
+#     ## Extensions enabled by default
+#     # Any of these extensions can be disabled for a
+#     # given input by passing: `f.input EXTENSION_NAME => false`.
+#     # You can make any of these extensions optional by
+#     # renaming `b.use` to `b.optional`.
 
-    # Determines whether to use HTML5 (:email, :url, ...)
-    # and required attributes
-    b.use :html5
+#     # Determines whether to use HTML5 (:email, :url, ...)
+#     # and required attributes
+#     b.use :html5
 
-    # Calculates placeholders automatically from I18n
-    # You can also pass a string as f.input placeholder: "Placeholder"
-    b.use :placeholder
+#     # Calculates placeholders automatically from I18n
+#     # You can also pass a string as f.input placeholder: "Placeholder"
+#     b.use :placeholder
 
-    ## Optional extensions
-    # They are disabled unless you pass `f.input EXTENSION_NAME => true`
-    # to the input. If so, they will retrieve the values from the model
-    # if any exists. If you want to enable any of those
-    # extensions by default, you can change `b.optional` to `b.use`.
+#     ## Optional extensions
+#     # They are disabled unless you pass `f.input EXTENSION_NAME => true`
+#     # to the input. If so, they will retrieve the values from the model
+#     # if any exists. If you want to enable any of those
+#     # extensions by default, you can change `b.optional` to `b.use`.
 
-    # Calculates maxlength from length validations for string inputs
-    # and/or database column lengths
-    b.optional :maxlength
+#     # Calculates maxlength from length validations for string inputs
+#     # and/or database column lengths
+#     b.optional :maxlength
 
-    # Calculate minlength from length validations for string inputs
-    b.optional :minlength
+#     # Calculate minlength from length validations for string inputs
+#     b.optional :minlength
 
-    # Calculates pattern from format validations for string inputs
-    b.optional :pattern
+#     # Calculates pattern from format validations for string inputs
+#     b.optional :pattern
 
-    # Calculates min and max from length validations for numeric inputs
-    b.optional :min_max
+#     # Calculates min and max from length validations for numeric inputs
+#     b.optional :min_max
 
-    # Calculates readonly automatically from readonly attributes
-    b.optional :readonly
+#     # Calculates readonly automatically from readonly attributes
+#     b.optional :readonly
 
-    ## Inputs
-    # b.use :input, class: 'input', error_class: 'is-invalid', valid_class: 'is-valid'
-    b.use :label_input
-    b.use :hint,  wrap_with: { tag: :span, class: :hint }
-    b.use :error, wrap_with: { tag: :span, class: :error }
+#     ## Inputs
+#     # b.use :input, class: 'input', error_class: 'is-invalid', valid_class: 'is-valid'
+#     b.use :label_input
+#     b.use :hint,  wrap_with: { tag: :span, class: :hint }
+#     b.use :error, wrap_with: { tag: :span, class: :error }
 
-    ## full_messages_for
-    # If you want to display the full error message for the attribute, you can
-    # use the component :full_error, like:
-    #
-    # b.use :full_error, wrap_with: { tag: :span, class: :error }
-  end
+#     ## full_messages_for
+#     # If you want to display the full error message for the attribute, you can
+#     # use the component :full_error, like:
+#     #
+#     # b.use :full_error, wrap_with: { tag: :span, class: :error }
+#   end
   # ---------------  END of SF original default configuration ----------------------
 
 
@@ -110,10 +110,10 @@ SimpleForm.setup do |config|
 
     ## Inputs
     # b.use :input, class: 'input', error_class: 'is-invalid', valid_class: 'is-valid'
+    b.use :label, class: "block text-sm font-medium text-gray-700 mt-4"
     b.use :input,
       class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm',
       error_class: 'block w-full pr-10 border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md'
-    b.use :label, class: "block text-sm font-medium text-gray-700"
     b.use :hint,  wrap_with: { tag: :p, class: "mt-2 text-sm text-gray-500" }
     # b.use :error, wrap_with: { tag: :span, class: :error }
 
@@ -125,23 +125,6 @@ SimpleForm.setup do |config|
   end
 
   # ---------------  END of Tailwind CSS default configuration ----------------------
-
-  config.wrappers :default, tag: 'div', class: '', error_class: '', valid_class: '' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.optional :maxlength
-    b.optional :minlength
-    b.optional :pattern
-    b.optional :min_max
-    b.optional :readonly
-
-    b.use :label, class: "block text-sm font-medium text-gray-700"
-    b.use :input,
-      class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm',
-      error_class: 'block w-full pr-10 border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md'
-    b.use :full_error, wrap_with: { tag: 'p', class: 'mt-2 text-sm text-red-600' }
-    b.use :hint,  wrap_with: { tag: :p, class: "mt-2 text-sm text-gray-500" }
-  end
 
   config.wrappers :prepend_string, tag: 'div', class: '', error_class: '', valid_class: '' do |b|
     b.use :html5

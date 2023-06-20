@@ -7,6 +7,9 @@ module.exports = {
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}',
     './config/initializers/simple_form.rb',
+    './gems/ruby/3.2.0/gems/simple_form_tailwind_css-1.0.0/lib/simple_form/**/*.rb',
+    './lib/simple_form/tailwind/**/*.rb',
+    `${process.env.SIMPLE_FORM_TAILWIND_DIR}/**/*.rb`,
   ],
   theme: {
     extend: {
