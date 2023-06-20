@@ -71,6 +71,10 @@ function bundle:update {
   bundle:install
 }
 
+function tailwind {
+  cmd /gems/ruby/3.2.0/gems/tailwindcss-rails-2.0.29-x86_64-linux/exe/x86_64-linux/tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/tailwind.css -c ./config/tailwind.config.js
+}
+
 function help {
   printf "%s <task> [args]\n\nTasks:\n" "${0}"
 
