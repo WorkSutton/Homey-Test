@@ -10,16 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_20_103912) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_20_213238) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "tracking_status", ["draft", "pending", "in_progress", "awaiting_information", "awaiting_approval", "approved", "overdue", "cancelled", "completed"]
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
+    t.enum "tracking_status", enum_type: "tracking_status"
   end
 
 end

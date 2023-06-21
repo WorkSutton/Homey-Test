@@ -1,4 +1,6 @@
 <% title(:Projects, @project.title) %>
 
 <h1><%= @project.title %></h1>
-<h3><%= @project.description %></h3>
+<h3>Description:</h3>
+<%= @project.description %>
+<h3>Tracking Status: <span><%= @project.tracking_status.humanize %></span></h3>

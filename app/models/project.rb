@@ -1,16 +1,29 @@
 class Project < ApplicationRecord
-  enum status: {
-      draft: 0,
-      pending: 10,
-      in_progress: 20,
-      awaiting_information: 30,
-      awaiting_approval: 40,
-      approved: 50,
-      overdue: 60,
-      cancelled: 70,
-      completed: 80
-    }
+  enum :tracking_status, {
+      draft: "draft",
+      pending: "pending",
+      in_progress: "in_progress",
+      awaiting_information: "awaiting_information",
+      awaiting_approval: "awaiting_approval",
+      approved: "approved",
+      overdue: "overdue",
+      cancelled: "cancelled",
+      completed: "completed"
+    }, default: :draft
 
   validates :title, presence: true
-  validates :status, presence: true
+  validates :tracking_status, presence: true
+  validates :tracking_status, inclusion: {
+    in: [
+      "draft",
+      "pending",
+      "in_progress",
+      "awaiting_information",
+      "awaiting_approval",
+      "approved",
+      "overdue",
+      "cancelled",
+      "completed"
+    ]
+  }
 end

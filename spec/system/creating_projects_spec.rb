@@ -19,6 +19,7 @@ RSpec.feature "Users can create new projects" do
 
     title = "Homey - Projects - Rogers @ 100 Lochabar Road, London, SW3 1QQ"
     expect(page).to have_title title
+    expect(page).to have_content "Draft"
   end
 
   scenario "with invalid attributes" do
