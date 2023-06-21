@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_20_213238) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_21_152821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_213238) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.enum "tracking_status", enum_type: "tracking_status"
+    t.index ["tracking_status"], name: "index_projects_on_tracking_status"
   end
 
 end
