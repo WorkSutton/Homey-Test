@@ -34,7 +34,7 @@ N.B. Choose the OS of the machine that you want to install for, and follow the d
 
 ## Quirks/Learnings/Note(s) (to future self 👨‍💻)
 
-Doing this task I started by developing in Docker - my preferred environment. 
+Doing this task I started by developing in Docker - my preferred environment.
 I do this for a couple of reasons:
   - so as not to polute my machine (👀 at you Node JS)
   - to reduce the instances of `it doesn't work on my machine` due to environmental/setup differences
@@ -47,8 +47,8 @@ This was a bit of a steep learning curve, initially the workaround was as follow
 - figure out how to reference code that had all the `utility classes`. Needed to prevent references
   in the browser html code but missing styles upon inspection. This occurs when the `tree-shaking` 
   to purge the 10_000's of utility classes that are not used runs.
-  It was complicated at first I thought by using Docker containers. After several fruitless hours on Friday afternoon I gave in. On the weekend I installed all the code necessary locally to have a functioning environment. LSS (Long Story Short 🫤) it turned out that the same issue existed. 
-  Not having used Tailwind CSS before I had to do some fast reading. 
+  It was complicated at first I thought by using Docker containers. After several fruitless hours on Friday afternoon I gave in. On the weekend I installed all the code necessary locally to have a functioning environment. LSS (Long Story Short 🫤) it turned out that the same issue existed.
+  Not having used Tailwind CSS before I had to do some fast reading.
   It took most of a weekend to fix various issues then take them back to Docker environment to determine how to fix under containers. Learnt lots on the way.
 
   How to locate the tailwind exe - gems are stored in the docker volumes and mapped in the compose file
