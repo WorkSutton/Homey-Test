@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_21_152821) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_21_182119) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
   create_enum "tracking_status", ["draft", "pending", "in_progress", "awaiting_information", "awaiting_approval", "approved", "overdue", "cancelled", "completed"]
+
+  create_table "comments", force: :cascade do |t|
+    t.text "detail", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_comments_on_project_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
@@ -27,4 +35,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_152821) do
     t.index ["tracking_status"], name: "index_projects_on_tracking_status"
   end
 
+  add_foreign_key "comments", "projects"
 end

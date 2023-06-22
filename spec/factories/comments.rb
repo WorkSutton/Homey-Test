@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :comment do
     detail { "Here is a comment!" }
-    project { nil }
+    association :project, factory: :project
   end
 end
