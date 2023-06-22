@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  has_many :comments
+
   enum :tracking_status, {
       draft: "draft",
       pending: "pending",
