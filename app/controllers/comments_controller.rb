@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment = @project.comments.build(comment_params)
     if @comment.save
       flash[:notice] = "Comment has been created."
-      redirect_to [@project, @comment]
+      redirect_to project_path @project
     end
   end
 
