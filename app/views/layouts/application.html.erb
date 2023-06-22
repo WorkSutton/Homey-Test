@@ -18,14 +18,12 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <div class="w-full md:w-96 md:max-w-full mx-auto">
-        <div class="p-6 border border-gray-300 sm:rounded-md">
-          <% flash.each do |key, message| %>
-            <div><%= message %></div>
-          <% end -%>
-          <%= yield %>
-        </div>
+    <main class="container mx-auto mt-28 px-5 flex prose">
+      <div class="w-full md:max-w-full mx-auto">
+        <% flash.each do |key, message| %>
+          <div class=""><%= message %></div>
+        <% end -%>
+        <%= yield %>
       </div>
     </main>
   </body>

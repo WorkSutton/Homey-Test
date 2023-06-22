@@ -1,5 +1,33 @@
-<div>
+<div class="w-full">
   <h1 class="font-bold text-4xl">Projects</h1>
+
+  <% if @projects.any? %>
+    <% @projects.each do |project| %>
+      <div class="container rounded-md border-red-400 border-2 mt-4 divide-y">
+        <div class="m-1">
+          <span><%= heroicon("home-modern", options: { class: "h-10 w-10 text-rose-500" }) %></span>
+        </div>
+        <div class="mx-4">
+          <h2 class="mt-1">
+            <%= link_to "#{project.title} - < Client Name >", project_path(project) %>
+          </h2>
+          <h4>Know As: <span><%= project.title %></span></h4>
+          <div class="flex gap-2 place-content-between">
+            <p class="basis-1/2">Principle contact: <span>< Primary Contact ></span></p>
+            <p class="basis-1/2">
+              Creation date: <%= project.created_at.strftime("%a, %d %b %Y ") %>
+            </p>
+          </div>
+          <p>
+            <%= project.description.blank? ? 'There is no current description of this project!' : project.description %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>There are no existing Projects</p>
+    <%= link_to "Create your first project", new_project_path %>
+  <% end -%>
 
   <%= link_to "New Project", new_project_path %>
 </div>
