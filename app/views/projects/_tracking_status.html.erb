@@ -1,1 +1,7 @@
-<%= f.input :tracking_status, collection: Project.tracking_statuses.symbolize_keys.keys, selected: project.tracking_status %>
+<%=
+  f.input :tracking_status,
+    as: :select,
+    collection: tracking_status_options,
+    selected: project.tracking_status,
+    input_html: { class: 'text-slate-800' }
+  %>

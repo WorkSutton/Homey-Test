@@ -6,4 +6,15 @@ module ApplicationHelper
       end
     end
   end
+
+  def tracking_status_options
+    # not sure if better to use the black or white colour emoji to represent draft '⚫' or '⚪'
+    tracking_statuses = Project.tracking_statuses.symbolize_keys
+    tracking_status_colours = %Q(⚪🔵🟢🔵🔵🟢🟠🔴🟢)
+    tracking_status_options = []
+    tracking_statuses.each_with_index do |status, idx|
+      tracking_status_options << [[tracking_status_colours[idx], status[1].titleize].join(" "), status[0]]
+    end
+    tracking_status_options
+  end
 end

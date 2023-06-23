@@ -7,7 +7,7 @@ RSpec.feature "Users can add comments to projects", type: :system do
     visit project_path(project)
 
     expect(page).to have_title "Homey - Projects - 11a Lochabar Road"
-    expect(page).to have_select "Tracking Status", selected: "Draft"
+    expect(page).to have_select "Tracking Status", selected: "⚪ Draft"
 
     click_link "Add Comment"
 
@@ -25,7 +25,7 @@ RSpec.feature "Users can add comments to projects", type: :system do
     visit project_path(project)
 
     expect(page).to have_title "Homey - Projects - 11a Lochabar Road"
-    expect(page).to_not have_select "Tracking Status", selected: "Completed"
+    expect(page).to_not have_select "Tracking Status", selected: "🔴 Completed"
 
     click_link "Add Comment"
     click_button "Create Comment"
