@@ -29,3 +29,22 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
+    labels:
+      project:
+        tracking_status: Tracking Status
+    options:
+      project:
+        tracking_status:
+          draft: Draft
+          pending: Pending
+          in_progress: In Progress
+          awaiting_information: Awaiting Information
+          awaiting_approval: Awaiting Approval
+          approved: Approved
+          overdue: Overdue
+          cancelled: Cancelled
+          completed: Completed
+    buttons:
+      project:
+        tracking_status:
+          submit: "%{btn_action_type} Status"

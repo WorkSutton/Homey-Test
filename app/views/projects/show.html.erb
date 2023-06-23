@@ -4,7 +4,13 @@
 <p>
   <%= @project.description.present? ? @project.description : "No description has been provided" %>
 </p>
-<h3>Tracking Status: <span><%= @project.tracking_status.humanize %></span></h3>
+<!-- <h3>Tracking Status: <span><%= @project.tracking_status.humanize %></span></h3> -->
+
+<%= simple_form_for(@project, builder: SimpleForm::Tailwind::FormBuilder, remote: true) do |f| %>
+  <%= render partial: "tracking_status", locals: { project: @project, f: f } %>
+  <%= f.submit I18n.t("simple_form.buttons.project.tracking_status.submit", btn_action_type: @project.persisted? ? :Update : :Create) %>
+<% end -%>
+
 <%= link_to "Add Comment", new_project_comment_path(@project) %>
 
 <% if @project.comments.any? %>

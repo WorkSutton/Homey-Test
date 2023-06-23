@@ -10,6 +10,9 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:notice] = "Comment has been created."
       redirect_to project_path @project
+    else
+      flash[:alert] = "Comment has not been created."
+      render :new, status: :unprocessable_entity
     end
   end
 
