@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_21_182119) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_23_094123) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,5 +35,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_182119) do
     t.index ["tracking_status"], name: "index_projects_on_tracking_status"
   end
 
+  create_table "tracking_status_histories", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.enum "tracking_status", null: false, enum_type: "tracking_status"
+    t.datetime "history_started_at", precision: nil, null: false
+    t.datetime "history_ended_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_tracking_status_histories_on_project_id"
+    t.index ["tracking_status"], name: "index_tracking_status_histories_on_tracking_status"
+  end
+
   add_foreign_key "comments", "projects"
+  add_foreign_key "tracking_status_histories", "projects"
 end
