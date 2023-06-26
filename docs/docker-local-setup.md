@@ -7,6 +7,7 @@
 - [Setup](#setup)
 - [Setup - locally FOR docker](#setup-locally-for-docker)
 - [Setup - locally WITHOUT docker](#setup-locally-without-docker)
+- [Stopping docker](#stopping-docker)
 - [Database creation](#database-creation)
 - [Database seeding](#database-seeding)
 - [How to run the test suite](#how-to-run-the-test-suite)
@@ -76,6 +77,13 @@ optionally run with `-d` to run in detached mode, but no logs will be presented
 - `./run rails s`  optionally pass a port option with `-p <port number to use locally>`
 
 
+#### Stopping docker
+
+To stop the containers running that have been setup run
+```bash
+  docker-compose stop  -- just stops the containers
+  docker-compose down  -- stops and removes the containers
+```
 
 
 #### About the `run` script
