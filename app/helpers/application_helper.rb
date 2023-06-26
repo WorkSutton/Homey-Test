@@ -17,4 +17,9 @@ module ApplicationHelper
     end
     tracking_status_options
   end
+
+  def comment_and_tracking_status_history(project)
+    history_aggregator = HistoryAggregator.new(project)
+    history_aggregator.history(order: :desc)
+  end
 end

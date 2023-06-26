@@ -19,5 +19,10 @@ RSpec.feature "Users can change a projects tracking status" do
     expect(lochabar_road_project.reload.tracking_status).to eq("in_progress")
     expect(page).to have_content "🟢 In Progress"
     expect(page).to have_select "Tracking Status", selected: "🟢 In Progress"
+
+    within('.history') do
+      expect(page).to have_content("In Progress")
+      expect(page).to have_content("Draft")
+    end
   end
 end

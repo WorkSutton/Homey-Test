@@ -1,0 +1,7 @@
+<div class="flex gap-2 place-content-between rounded-lg bg-yellow-100 border-4 border-slate-100 mt-2">
+  <p class="basis-1/2 p-1 m-1 text-left"><%= comment_and_tracking_status_history[:event] %></p>
+  <div class="basis-1/2 text-right mt-2 pr-2">
+    <div class=""><%= comment_and_tracking_status_history[:created_at].strftime("%a, %d %b %Y") %></div>
+    <div class=""><%= comment_and_tracking_status_history[:created_at].strftime("%H%M %z") %></div>
+  </div>
+</div>

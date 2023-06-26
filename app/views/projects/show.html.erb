@@ -8,13 +8,11 @@
 
 <%= simple_form_for(@project, builder: SimpleForm::Tailwind::FormBuilder, remote: true) do |f| %>
   <%= render partial: "tracking_status", locals: { project: @project, f: f } %>
-  <%= f.submit I18n.t("simple_form.buttons.project.tracking_status.submit", btn_action_type: @project.persisted? ? :Update : :Create), class: "w-full flex justify-center mt-4 py-2 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+  <%= f.submit I18n.t("simple_form.buttons.project.tracking_status.submit", btn_action_type: @project.persisted? ? :Update : :Create), class: "w-full flex justify-center my-4 py-2 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
 <% end -%>
 
 <%= link_to "Add Comment", new_project_comment_path(@project) %>
 
-<% if @project.comments.any? %>
-  <%= render partial: "comments/comment", collection: @project.comments %>
-<% else %>
-  <div>No activity for this project yet</div>
-<% end %>
+<div class="history mt-8">
+  <%= render partial: "comment_and_tracking_status_history", collection: comment_and_tracking_status_history(@project) || "No activity for this project yet" %>
+</div>
