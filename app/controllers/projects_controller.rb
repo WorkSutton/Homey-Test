@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :find_project, only: [:show, :update]
+
   def index
     @projects = Project.all
   end
@@ -19,11 +21,9 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
     if @project.update(project_update_params)
       flash[:notice] = "All updated"
       redirect_to @project
@@ -36,6 +36,13 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def find_project
+    @project = Project.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "The project you were looking for could not be found!"
+    redirect_to projects_path
+  end
 
   def project_params
     params.require(:project).permit(:title, :description, :tracking_status)
