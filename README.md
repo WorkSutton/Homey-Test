@@ -7,6 +7,7 @@
 - [Setup to run locally](#setup-to-run-locally)
 - [Design](#design)
 - [Notes](#notes)
+- [Screenshots](#screenshots)
 
 ## Task
 
@@ -49,3 +50,10 @@ The design decisions taken related to the brief are contained in the `docs` fold
 [Questions, Answers and Assumptions](docs/questions-answers-and-assumptions.md)
 
 ## Notes
+
+## Screenshots
+
+As part of the design & delivery process we are working closely with our business colleagues.
+While the designers will provide mock-ups in tools like Figma, we have made it easy to show
+the latest versions of approved screens.
+They can be found in the [screenshots document](docs/screenshots.md)
