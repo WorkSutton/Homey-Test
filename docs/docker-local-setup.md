@@ -4,6 +4,9 @@
 - [Background](#background)
 - [Prerequisites](#prerequisites)
 - [Configuration](#configuration)
+- [Setup](#setup)
+- [Setup - locally FOR docker](#setup-locally-for-docker)
+- [Setup - locally WITHOUT docker](#setup-locally-without-docker)
 - [Database creation](#database-creation)
 - [Database seeding](#database-seeding)
 - [How to run the test suite](#how-to-run-the-test-suite)
@@ -22,15 +25,109 @@ N.B. Choose the OS of the machine that you want to install for, and follow the d
 
 ## Configuration
 
+N.B. The project is configured to run on your `local machine` on `port 3025`.
+This is to reduce the chance of conflicts with other local projects.
+
+How to change the entry back to the default of `localhost:3000` in the [docker-compose.yml](../docker-compose.yml)
+
+```bash
+services:
+  web:
+    build: .
+    ports:
+      - 3025:3000  <---- alter the LHS (3025) entry as that represents the outside world
+
+```
+
+## Setup
+
+Detail instructions for setup can be found here. If you do not wish to use docker then run the standard Rails 7 setup here [Setup - locally WITHOUT Docker]():
+
+### Setup - locally FOR docker
+
+The next subsections - Build everything, About the run script and then Database Creation describe in depth how to setup Homey Test to run in a dockerised local environment.
+
+#### Build everything
+
+1. Build the project locally
+```bash
+docker compose up --build
+```
+
+2. Setup the initial database
+
+From another terminal window/tab run the following command. The assumption is that Step 1 completed successfully. Or is logging output to the terminal window
+
+```bash
+./run rails db:setup
+```
+
+    #TODO: Enhance with ideals from David Copeland's excellent book [Sustainable Web Development with Ruby on Rails](https://sustainable-rails.com/) around setup
+
+3. Run the server via one of several options, two are provided here
+
+In Step 1 `up` was passed to the `docker compose` command, all going well the docker container was built from the `Docker` image in the project and the container is now up and running.
+If it is not there are two options:
+
+- `docker-compose up`
+
+optionally run with `-d` to run in detached mode, but no logs will be presented
+
+- `./run rails s`  optionally pass a port option with `-p <port number to use locally>`
+
+
+
+
+#### About the `run` script
+
+This is found in the root folder and is a modified version of that written by Nick Janetakis and provided as part of his esbuild/Node focused [rails docker starter project](https://github.com/nickjj/docker-rails-example).
+
+He suggest alising `./run` in your shell so one can simply type `run` vs `./run help`
+
+Help is available by running `./run help`.
+
+    #FIXME: Clean up know issues with run script - e.g. shell function defaults to bash not Alpine Linux ash
+
+
+### Setup - locally WITHOUT docker
+
+- Clone this repository
+- `bin/setup`
+- `rails s -p 3025`
+- visit [http://localhost:3000](http://localhost:3025)
 
 
 ## Database creation
 
+The project can be setup with the docker compose/run script cmd below
 
+```bash
+  ./run cmd bin/setup`
+```
 
 ## Database seeding
 
+N/A
+
 ## How to run the test suite
+
+To run the specs - RSpec is the testing tool - the following two ways can be used to run the specs when using the docker setup locally
+
+ - from the command line on local machine
+```bash
+  ./run cmd bundle exec rspec
+```
+
+or
+
+- from within a running Alpine docker container
+
+  ```bash
+  ./run cmd ash
+  bundle exec rspec
+  ```
+
+N.B the docker container needs to be up and running.
 
 ## Quirks/Learnings/Note(s) (to future self 👨‍💻)
 
