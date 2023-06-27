@@ -165,12 +165,14 @@ This was a bit of a steep learning curve, initially the workaround was as follow
   ./run cmd ash
   ```
   N.B. it's `ash` not bash/zsh/sh as the images are `Alpine Linux`
+
   2. confirm the location of the `exe`
   ```bash
   / # ls -lrt /gems/ruby/3.2.0/gems/tailwindcss-rails-2.0.29-x86_64-linux/exe/x86_64-linux/
   total 41116
   -rwxr-xr-x    1 root     root      42094864 Jun 15 09:48 tailwindcss
   ```
+
   3. run the command to read the relevant files and generate the output file via the build process
   ```bash
   /usr/src/app # /gems/ruby/3.2.0/gems/tailwindcss-rails-2.0.29-x86_64-linux/exe/x86_64-linux/tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/tailwind.css -c ./config/tailwind
@@ -186,7 +188,7 @@ This was a bit of a steep learning curve, initially the workaround was as follow
 
   The above - or so I thought - certainly the screens were telling me that!
 
-  ![Aspirational new project form with errors preview](/docs/images/actual-form-with-errors.png.png?raw=true)
+  ![Aspirational new project form with errors preview](/docs/images/actual-form-with-errors.png?raw=true)
 
   vs.
 
