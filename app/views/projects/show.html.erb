@@ -1,6 +1,10 @@
 <% title(:Projects, @project.title) %>
 
-<h1><%= @project.title %></h1>
+<div class="flex justify-between items-center">
+  <h1 class=""><%= @project.title %></h1>
+  <%= link_to 'All projects', projects_path, class: "py-2 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+</div>
+
 <p>
   <%= @project.description.present? ? @project.description : "No description has been provided" %>
 </p>
@@ -11,7 +15,10 @@
   <%= f.submit I18n.t("simple_form.buttons.project.tracking_status.submit", btn_action_type: @project.persisted? ? :Update : :Create), class: "w-full flex justify-center my-4 py-2 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
 <% end -%>
 
-<%= link_to "Add Comment", new_project_comment_path(@project) %>
+<div class="flex justify-between items-center">
+  <br>
+  <%= link_to 'Add comment', new_project_comment_path(@project), class: "py-2 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+</div>
 
 <div class="history mt-8">
   <%= render partial: "comment_and_tracking_status_history", collection: comment_and_tracking_status_history(@project) || "No activity for this project yet" %>

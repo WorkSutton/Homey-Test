@@ -20,9 +20,11 @@
   <body>
     <main class="container mx-auto mt-28 px-5 flex prose">
       <div class="w-full md:max-w-full mx-auto">
-        <% flash.each do |key, message| %>
-          <div class=""><%= message %></div>
-        <% end -%>
+        <div class="">
+          <% flash.each do |key, message| %>
+            <div class=""><%= message %></div>
+          <% end -%>
+        </div>
         <%= yield %>
       </div>
     </main>
