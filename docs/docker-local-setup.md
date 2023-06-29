@@ -11,6 +11,8 @@
 - [Database creation](#database-creation)
 - [Database seeding](#database-seeding)
 - [How to run the test suite](#how-to-run-the-test-suite)
+- [Development - Tailwind rebuild CSS](#development-tailwind-rebuild-css)
+- [Quirks/Learnings/Note(s) (to future self 👨‍💻)](#Quirks-learnings/notes)
 
 ## Background
 
@@ -101,7 +103,7 @@ Help is available by running `./run help`.
 
 - Clone this repository
 - `bin/setup`
-- `rails s -p 3025`
+- `rails s -p 3025` or `bin/dev` (bin/dev will also watch for changes in code using tailwind styling)
 - visit [http://localhost:3000](http://localhost:3025)
 
 
@@ -136,6 +138,44 @@ or
   ```
 
 N.B the docker container needs to be up and running.
+
+## Development - Tailwind rebuild CSS
+
+To have tailwind rebuild there are two options.
+
+ - with Docker
+
+```bash
+  ./run tailwind
+```
+
+If this does not run check the following in the running container (so need to have at least run `docker compose up -d`)
+
+```bash
+  ./run cmd ash
+  ls -lrt /gems/ruby/3.2.0/gems | grep tailwindcss
+```
+
+The result should be `tailwindcss-rails-2.0.29` (version might have changed)
+  #TODO: test if pinning the version of tailwindcss-rails keeps this constant
+
+Also check which gem specification is used.
+
+```bash
+  ./run cmd ash
+  ls -lrt /gems/ruby/3.2.0/specifications | grep tailwindcss
+```
+
+The result should be:
+ - Linux - `tailwindcss-rails-2.0.29-x86_64-linux.gemspec`
+ - M1/M2 Mac - `tailwindcss-rails-2.0.29-aarch64-linux.gemspec`
+
+or
+
+- without docker in a terminal run `bin/dev`
+
+  this will use the `Procfile.dev` which has commands to run both a server locally & watch for tailwind css styling changes
+
 
 ## Quirks/Learnings/Note(s) (to future self 👨‍💻)
 
@@ -173,7 +213,8 @@ This was a bit of a steep learning curve, initially the workaround was as follow
   -rwxr-xr-x    1 root     root      42094864 Jun 15 09:48 tailwindcss
   ```
 
-  3. run the command to read the relevant files and generate the output file via the build process
+  3. run the command to read the relevant files and generate the output file via the build process (linux only). From mac see section on [Development - Tailwind rebuild CSS](#development-tailwind-rebuild-css)
+
   ```bash
   /usr/src/app # /gems/ruby/3.2.0/gems/tailwindcss-rails-2.0.29-x86_64-linux/exe/x86_64-linux/tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/tailwind.css -c ./config/tailwind
   .config.js

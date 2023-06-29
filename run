@@ -71,8 +71,28 @@ function bundle:update {
   bundle:install
 }
 
+function platform {
+  unameOut="$(uname -s)"
+  case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    MSYS_NT*)   machine=Git;;
+    *)          machine="UNKNOWN:${unameOut}"
+  esac
+  echo ${machine}
+}
+
 function tailwind {
-  cmd /gems/ruby/3.2.0/gems/tailwindcss-rails-2.0.29-x86_64-linux/exe/x86_64-linux/tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/tailwind.css -c ./config/tailwind.config.js
+  platform
+  if [ "$machine" == "Mac" ]; then
+    # code to run tailwind standalone CLI on M1/M2 mac platform
+    cmd /gems/ruby/3.2.0/gems/tailwindcss-rails-2.0.29-aarch64-linux/exe/aarch64-linux/tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/tailwind.css -c ./config/tailwind.config.js
+  elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    # code to run tailwind standalone CLI on GNU/Linux platforms
+    cmd /gems/ruby/3.2.0/gems/tailwindcss-rails-2.0.29-x86_64-linux/exe/x86_64-linux/tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/tailwind.css -c ./config/tailwind.config.js
+  fi
 }
 
 function help {
