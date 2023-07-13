@@ -86,12 +86,27 @@ function platform {
 
 function tailwind {
   platform
+
+  # Build CSS assets, this is only meant to be referenced from your package.json
+  local args=()
+
+  if [ "${NODE_ENV:-}" == "production" ]; then
+    args=(--minify)
+  end
+  if [ "${RAILS_ENV:-}" == "development" ]; then
+    args=(--watch)
+  fi
+
   if [ "$machine" == "Mac" ]; then
     # code to run tailwind standalone CLI on M1/M2 mac platform
     cmd /gems/ruby/3.2.0/gems/tailwindcss-rails-2.0.29-aarch64-linux/exe/aarch64-linux/tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/tailwind.css -c ./config/tailwind.config.js
   elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # code to run tailwind standalone CLI on GNU/Linux platforms
-    cmd /gems/ruby/3.2.0/gems/tailwindcss-rails-2.0.29-x86_64-linux/exe/x86_64-linux/tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/tailwind.css -c ./config/tailwind.config.js
+    cmd /gems/ruby/3.2.0/gems/tailwindcss-rails-2.0.29-x86_64-linux/exe/x86_64-linux/tailwindcss \
+    # cmd tailwindcss \
+      -i ./app/assets/stylesheets/application.tailwind.css \
+      -o ./app/assets/builds/tailwind.css \
+      -c ./config/tailwind.config.js  "${args[@]}"
   fi
 }
 
