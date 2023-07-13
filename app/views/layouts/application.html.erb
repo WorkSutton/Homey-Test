@@ -19,13 +19,19 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex prose">
+    <!-- <main class="container mx-auto mt-28 px-5 flex"> -->
       <div class="w-full md:max-w-full mx-auto">
-        <div class="">
+        <div>
           <% flash.each do |key, message| %>
-            <div class=""><%= message %></div>
+            <div data-controller="flash-message" class="">
+              <%= build_flash(key, message) %>
+            </div>
           <% end -%>
         </div>
+
         <%= yield %>
+
+        <!-- </div> -->
       </div>
     </main>
   </body>
